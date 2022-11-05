@@ -97,7 +97,7 @@ const Home: NextPage = () => {
                     /> */}
                 </div>
             </header>
-            <main className="flex-grow w-full bg-[url('/assets/adidas_simple.png')]">
+            <main className="flex-grow w-full bg-[url('/assets/adidas_bg.png')] bg-cover">
                 {/* Content
                 <DisplayNameComp /> */}
 
