@@ -165,7 +165,7 @@ const Home: NextPage = () => {
                         <div className="bg-white text-3xl">#4 Join the fam</div>
                         <div className="p-4">
                             <div className="text-white text-xl">
-                                Follow us on twitter and don't miss future
+                                Follow us on twitter and don`t miss future
                                 updates!
                             </div>
                             <div className="mt-2 flex flex-row items-center justify-around">
@@ -180,16 +180,16 @@ const Home: NextPage = () => {
                                     <script
                                         async
                                         src="https://platform.twitter.com/widgets.js"
-                                        charset="utf-8"
+                                        charSet="utf-8"
                                     ></script>
                                 </div>
                                 <div>
                                     <button
                                         type="button"
-                                        className="inline-block p-2 text-white text-xs font-semibold rounded flex flex-row items-center"
-                                        style={{
-                                            'background-color': '#7289da',
-                                        }}
+                                        className="inline-block p-2 text-white text-xs font-semibold rounded flex flex-row items-center bg-purple-600"
+                                        // style={{
+                                        //     'background-color': '#7289da',
+                                        // }}
                                     >
                                         <div>
                                             <svg
