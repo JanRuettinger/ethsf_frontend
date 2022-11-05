@@ -9,6 +9,7 @@ import { User } from '@supabase/supabase-js';
 import { useRouter } from 'next/router';
 
 import { supabase } from '../src/utils/SupabaseClient';
+import Link from 'next/link';
 
 const Home: NextPage = () => {
     // const { data } = useAccount();
@@ -70,8 +71,18 @@ const Home: NextPage = () => {
                 />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <header className="pt-4 pb-2 bg-white flex flex-row justify-between">
-                <div className="pl-4">Adadis</div>
+            <header className="pt-4 pb-2 bg-white flex flex-row justify-between items-center ">
+                <div className="pl-4">
+                    <Link href="/">
+                        <a>
+                            <img
+                                src="/assets/adadis_logo_small.png"
+                                className="object-cover w-24"
+                                alt="Image alt text"
+                            />
+                        </a>
+                    </Link>
+                </div>
                 <div className="flex flex-row justify-between w-1/5">
                     <div className="text-xl font-bold">Men</div>
                     <div className="text-xl font-bold">Women</div>
