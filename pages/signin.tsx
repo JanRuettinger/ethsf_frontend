@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { Dialog } from '@headlessui/react';
 import { useRouter } from 'next/router';
 import { supabase } from '../src/utils/SupabaseClient';
+import Link from 'next/link';
 
 const Home: NextPage = () => {
     let [isOpen, setIsOpen] = useState(false);
@@ -30,25 +31,6 @@ const Home: NextPage = () => {
         }
     };
 
-    // const DisplayNameComp = () => {
-    //     if (isConnected && data) {
-    //         return <div>Your address is: {data.address}</div>;
-    //     } else {
-    //         return <></>;
-    //     }
-    // };
-
-    // const { error } = await supabase.auth.signUp({
-    //     email,
-    //     password,
-    // });
-
-    // if (error) {
-    //     alert(JSON.stringify(error));
-    // } else {
-    //     router.push('/signin');
-    // }
-
     return (
         <div className="flex flex-col h-screen">
             <Head>
@@ -59,8 +41,18 @@ const Home: NextPage = () => {
                 />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <header className="pt-4 pb-2 bg-white flex flex-row justify-between">
-                <div className="pl-4">Adadis</div>
+            <header className="pt-4 pb-2 bg-white flex flex-row justify-between items-center ">
+                <div className="pl-4">
+                    <Link href="/">
+                        <a>
+                            <img
+                                src="/assets/adadis_logo_small.png"
+                                className="object-cover w-24"
+                                alt="background image"
+                            />
+                        </a>
+                    </Link>
+                </div>
                 <div className="flex flex-row justify-between w-1/5">
                     <div className="text-xl font-bold">Men</div>
                     <div className="text-xl font-bold">Women</div>
@@ -69,17 +61,17 @@ const Home: NextPage = () => {
                     <div>Sale</div>
                 </div>
                 <div>
-                    <button
-                        onClick={() => {
-                            setIsOpen(true);
-                        }}
-                        className="text-2xl font-bold"
-                    >
-                        Login
-                    </button>
+                    <div className="text-2xl p-4 font-bold border-black">
+                        Hello Jan
+                    </div>
+                    {/* <ConnectButton */}
+                    {/* // chainStatus="none"
+                    // showBalance={false}
+                    // accountStatus="address"
+                    /> */}
                 </div>
             </header>
-            <main className="flex-grow w-full bg-[url('/assets/adidas_simple.png')]">
+            <main className="flex-grow w-full bg-[url('/assets/clean_background.png')] bg-cover">
                 {/* Content
                 <DisplayNameComp /> */}
 
