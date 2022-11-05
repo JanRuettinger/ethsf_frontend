@@ -31,6 +31,25 @@ const Home: NextPage = () => {
         }
     };
 
+    // const DisplayNameComp = () => {
+    //     if (isConnected && data) {
+    //         return <div>Your address is: {data.address}</div>;
+    //     } else {
+    //         return <></>;
+    //     }
+    // };
+
+    // const { error } = await supabase.auth.signUp({
+    //     email,
+    //     password,
+    // });
+
+    // if (error) {
+    //     alert(JSON.stringify(error));
+    // } else {
+    //     router.push('/signin');
+    // }
+
     return (
         <div className="flex flex-col h-screen">
             <Head>
@@ -61,8 +80,15 @@ const Home: NextPage = () => {
                     <div>Sale</div>
                 </div>
                 <div>
-                    <div className="text-2xl p-4 font-bold border-black">
-                        Hello Jan
+                    <div className="text-2xl p-4 font-bold border-black hover:bg-black hover:text-white rounded-md border-2 mr-4">
+                        <button
+                            onClick={() => {
+                                setIsOpen(true);
+                            }}
+                            className="text-2xl font-bold"
+                        >
+                            Login
+                        </button>
                     </div>
                     {/* <ConnectButton */}
                     {/* // chainStatus="none"
@@ -71,7 +97,7 @@ const Home: NextPage = () => {
                     /> */}
                 </div>
             </header>
-            <main className="flex-grow w-full bg-[url('/assets/clean_background.png')] bg-cover">
+            <main className="flex-grow w-full bg-[url('/assets/adidas_simple.png')]">
                 {/* Content
                 <DisplayNameComp /> */}
 
