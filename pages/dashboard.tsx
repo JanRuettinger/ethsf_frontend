@@ -13,18 +13,18 @@ import Link from 'next/link';
 import Header from '../components/Header';
 
 const Home: NextPage = () => {
-    // const { data } = useAccount();
-    // const { isConnected } = useConnect();
+    const { data } = useAccount();
+    const { isConnected } = useConnect();
 
     let [isOpen, setIsOpen] = useState(true);
 
-    // const DisplayNameComp = () => {
-    //     if (isConnected && data) {
-    //         return <div>Your address is: {data.address}</div>;
-    //     } else {
-    //         return <></>;
-    //     }
-    // };
+    const DisplayNameComp = () => {
+        if (isConnected && data) {
+            return <span>Your wallet is connected!</span>;
+        } else {
+            return <></>;
+        }
+    };
 
     const router = useRouter();
     const [user, setUser] = useState<User | null>();
@@ -49,7 +49,6 @@ const Home: NextPage = () => {
 
             if (user) {
                 setUser(user);
-                router.push('/dashboard');
             } else {
                 router.push('/signin');
             }
@@ -90,9 +89,6 @@ const Home: NextPage = () => {
                     <div>Sale</div>
                 </div>
                 <div>
-                    {/* <button className="text-xl rounded-md border-2 p-4 border-black hover:bg-black hover:text-white">
-                        Login / Signup
-                    </button> */}
                     <div className="text-2xl p-4 font-bold border-black">
                         Hello Jan
                     </div>
@@ -103,7 +99,51 @@ const Home: NextPage = () => {
                     /> */}
                 </div>
             </header>
-            <main className="flex-grow w-full bg-[url('/assets/adidas_simple.png')]">
+            <main className="flex-grow w-full bg-[url('/assets/adadis_clean_background.png')]">
+                <div className="p-6">
+                    <div className="text-center text-4xl font-bold text-white">
+                        Welcome to the adadis Metaverse!
+                    </div>
+                    <div className="text-center text-2xl text-white">
+                        Solve challenges, become part of the team and earn cool
+                        rewards.
+                    </div>
+                </div>
+
+                <div className="grid grid-cols-2 mx-auto w-4/5 justify-between gap-y-4">
+                    <div className="bg-white/20 rounded-md border-2 w-4/5 mx-auto mb-28">
+                        <div className="bg-white text-3xl">
+                            #1 Getting Started
+                        </div>
+                        <div className="p-4">
+                            <div className="text-white text-xl">
+                                First connect your wallet and to receive your
+                                membership pass to adadis!
+                            </div>
+                            <div className="mt-4">
+                                <ConnectButton
+                                    chainStatus="none"
+                                    showBalance={false}
+                                    accountStatus="address"
+                                />
+                                <div className="text-green-900 font-bold mt-2">
+                                    <DisplayNameComp />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="bg-white/20 rounded-md border-2 h-44 w-4/5 mx-auto mb-28">
+                        <div className="bg-white text-3xl">#2 Level up</div>
+                    </div>
+                    <div className="bg-white/20 rounded-md border-2 h-44 w-4/5 mx-auto mb-28">
+                        <div className="bg-white text-3xl">#3 Join the fam</div>
+                    </div>
+                    <div className="bg-white/20 rounded-md border-2 h-44 w-4/5 mx-auto mb-28">
+                        <div className="bg-white text-3xl">
+                            #4 Connect with your idol
+                        </div>
+                    </div>
+                </div>
                 {/* Content
                 <DisplayNameComp /> */}
 
@@ -113,50 +153,6 @@ const Home: NextPage = () => {
                     className="object-cover w-full h-full"
                     alt="Image alt text"
                 /> */}
-
-                <Dialog
-                    open={isOpen}
-                    onClose={() => setIsOpen(false)}
-                    className="relative z-50"
-                >
-                    {/* The backdrop, rendered as a fixed sibling to the panel container */}
-                    <div
-                        className="fixed inset-0 bg-black/60"
-                        aria-hidden="true"
-                    />
-
-                    {/* Full-screen container to center the panel */}
-                    <div className="fixed inset-0 flex items-center justify-center p-4">
-                        {/* The actual dialog panel  */}
-                        <Dialog.Panel className="mx-auto w-2/6 rounded bg-white">
-                            <Dialog.Title className="text-xl p-4">
-                                Join the Adadis metaverse and parrticipate in
-                                epic virtual competitions!
-                            </Dialog.Title>
-                            {/* <p>
-                                Get free shipping, discount vouchers and members
-                                only products when you’re in adiClub LOG IN OR
-                                SIGN UP (ITS FREE) Enter your email to access or
-                                create your account.
-                            </p> */}
-                            <div className="w-2/6 mx-auto my-8 text-2xl bg-blue-500 rounded-md p-4 text-center">
-                                <ConnectButton
-                                // chainStatus="none"
-                                // showBalance={false}
-                                // accountStatus="address"
-                                />
-                            </div>
-
-                            {/* <button onClick={() => setIsOpen(false)}>
-                                Deactivate
-                            </button>
-                            <button onClick={() => setIsOpen(false)}>
-                                Cancel
-                            </button> */}
-                            {/* ... */}
-                        </Dialog.Panel>
-                    </div>
-                </Dialog>
 
                 {/* </section> */}
             </main>
