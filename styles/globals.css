@@ -97,4 +97,20 @@
     html {
         @apply font-inter font-light;
     }
+
+    .twitter-follow-button,
+    .twitter-follow-button:visited {
+        background-color: #1b95e0;
+        color: #fff;
+        border-radius: 4px;
+        height: 28px;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 26px;
+        padding: 8px;
+        text-decoration: none;
+    }
+    .twitter-follow-button:hover {
+        background-color: #0c7abf;
+    }
 }
