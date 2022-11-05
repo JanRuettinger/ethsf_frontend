@@ -70,27 +70,33 @@ const Home: NextPage = () => {
                 />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            {/* <header className="p-4 bg-red-500 flex flex-row justify-between"> */}
-            <header className="">
-                {/* <div>NAME </div>
+            <header className="pt-4 pb-2 bg-white flex flex-row justify-between">
+                <div className="pl-4">Adadis</div>
+                <div className="flex flex-row justify-between w-1/5">
+                    <div className="text-xl font-bold">Men</div>
+                    <div className="text-xl font-bold">Women</div>
+                    <div className="text-xl font-bold">Kids</div>
+                    <div>Gifts</div>
+                    <div>Sale</div>
+                </div>
                 <div>
                     <ConnectButton
                     // chainStatus="none"
                     // showBalance={false}
                     // accountStatus="address"
                     />
-                </div> */}
+                </div>
             </header>
-            <main className="flex-grow w-full">
+            <main className="flex-grow w-full bg-[url('/assets/adidas_simple.png')]">
                 {/* Content
                 <DisplayNameComp /> */}
 
                 {/* <section className="w-full h-screen"> */}
-                <img
-                    src="/assets/adidas.png"
+                {/* <img
+                    src="/assets/adidas_simple.png"
                     className="object-cover w-full h-full"
                     alt="Image alt text"
-                />
+                /> */}
 
                 <Dialog
                     open={isOpen}
@@ -138,7 +144,7 @@ const Home: NextPage = () => {
 
                 {/* </section> */}
             </main>
-            <footer className=""></footer>
+            {/* <footer className="">Adiads original</footer> */}
             {/* <footer className="p-4 bg-blue-500">Footer</footer> */}
         </div>
     );
