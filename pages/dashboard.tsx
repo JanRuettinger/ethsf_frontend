@@ -55,7 +55,7 @@ const Home: NextPage = () => {
 
     useEffect(() => {
         if (isConnected == true && user) {
-            fetch('http://65.108.86.124:32435/enrich_user_data', {
+            fetch('https://ethsf-backend.abion.xyz/enrich_user_data', {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',
