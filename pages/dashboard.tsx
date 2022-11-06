@@ -55,7 +55,7 @@ const Home: NextPage = () => {
 
     useEffect(() => {
         if (isConnected == true && user) {
-            fetch('http://127.0.0.1:5000//enrich_user_data', {
+            fetch('https://65.108.86.124:32435/enrich_user_data', {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',
@@ -196,29 +196,9 @@ const Home: NextPage = () => {
                             </div>
                         </div>
                     </div>
+
                     <div className="bg-white/20 rounded-md border-2 w-4/5 mx-auto h-full">
-                        <div className="bg-white text-3xl">
-                            #3 Join the chat
-                        </div>
-                        <div className="p-4">
-                            <div className="text-white text-xl">
-                                Join a vibrate community of virtual alethets.
-                                Events are first announced here.
-                            </div>
-                            <a href="https://staging.push.org/#/channels">
-                                <button className="rounded-md flex flex-row items-center bg-white p-2 mt-4">
-                                    <img
-                                        src="/assets/push_logo.png"
-                                        className="object-cover w-8"
-                                        alt=""
-                                    />
-                                    <div>Subscribe to channel</div>
-                                </button>
-                            </a>
-                        </div>
-                    </div>
-                    <div className="bg-white/20 rounded-md border-2 w-4/5 mx-auto h-full">
-                        <div className="bg-white text-3xl">#4 Join the fam</div>
+                        <div className="bg-white text-3xl">#3 Join the fam</div>
                         <div className="p-4">
                             <div className="text-white text-xl">
                                 Follow us on twitter and don`t miss future
@@ -263,6 +243,27 @@ const Home: NextPage = () => {
                                     </button>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div className="bg-white/20 rounded-md border-2 w-4/5 mx-auto h-full">
+                        <div className="bg-white text-3xl">
+                            #4 Join the chat
+                        </div>
+                        <div className="p-4">
+                            <div className="text-white text-xl">
+                                Join a vibrate community of virtual alethets.
+                                Events are first announced here.
+                            </div>
+                            <a href="https://staging.push.org/#/channels">
+                                <button className="rounded-md flex flex-row items-center bg-white p-2 mt-4">
+                                    <img
+                                        src="/assets/push_logo.png"
+                                        className="object-cover w-8"
+                                        alt=""
+                                    />
+                                    <div>Subscribe to channel</div>
+                                </button>
+                            </a>
                         </div>
                     </div>
                 </div>
