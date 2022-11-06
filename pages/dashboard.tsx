@@ -1,22 +1,18 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { useAccount, useConnect } from 'wagmi';
-import { Dialog } from '@headlessui/react';
+import { useAccount, useConnect, useSigner, useProvider } from 'wagmi';
 import React, { MouseEventHandler, useEffect, useState } from 'react';
 import { User } from '@supabase/supabase-js';
 import { useRouter } from 'next/router';
+import * as EpnsAPI from '@pushprotocol/restapi';
 
 import { supabase } from '../src/utils/SupabaseClient';
 import Link from 'next/link';
-import Header from '../components/Header';
 
 const Home: NextPage = () => {
     const { data } = useAccount();
     const { isConnected } = useConnect();
-
-    let [isOpen, setIsOpen] = useState(true);
 
     const DisplayNameComp = () => {
         if (isConnected && data) {
@@ -57,15 +53,57 @@ const Home: NextPage = () => {
         getProfile();
     }, []);
 
+    useEffect(() => {
+        if (isConnected == true && user) {
+            fetch('http://127.0.0.1:5000//enrich_user_data', {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: user?.email,
+                    wallet_address: data?.address,
+                }),
+            })
+                .then((response) => response.json())
+                .then((response) => console.log(JSON.stringify(response)));
+        }
+    }, [isConnected, data, user]);
+
     if (!user) {
         // Currently loading asynchronously User Supabase Information
         return null;
     }
 
+    const optInChannel = async () => {
+        if (typeof window.ethereum !== 'undefined') {
+            // @ts-ignore
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            const signer = provider.getSigner();
+
+            await EpnsAPI.channels.subscribe({
+                // @ts-ignore
+                signer: signer,
+                channelAddress:
+                    'eip155:5:0xD8634C39BBFd4033c0d3289C4515275102423681', // channel address in CAIP
+                userAddress:
+                    'eip155:5:0x52f856A160733A860ae7DC98DC71061bE33A28b3', // user address in CAIP
+                onSuccess: () => {
+                    console.log('opt in success');
+                },
+                onError: () => {
+                    console.error('opt in error');
+                },
+                env: 'staging',
+            });
+        }
+    };
+
     return (
         <div className="flex flex-col h-screen">
             <Head>
-                <title>Adadis</title>
+                <title>adidas</title>
                 <meta name="description" content="Adadis" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
@@ -102,7 +140,7 @@ const Home: NextPage = () => {
             <main className="flex-grow w-full bg-[url('/assets/clean_background.png')] bg-cover">
                 <div className="p-6">
                     <div className="text-center text-4xl font-bold text-white">
-                        Welcome to the adadis Metaverse!
+                        Welcome to the adidas Metaverse!
                     </div>
                     <div className="text-center text-2xl text-white">
                         Solve challenges, become part of the team and earn cool
@@ -110,7 +148,7 @@ const Home: NextPage = () => {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-2 mx-auto w-4/5 justify-between gap-y-4 items-stretch">
+                <div className="grid grid-cols-2 mx-auto w-4/5 justify-between gap-y-48 items-stretch">
                     <div className="bg-white/20 rounded-md border-2 w-4/5 mx-auto  h-full">
                         <div className="bg-white text-3xl">
                             #1 Getting Started
@@ -122,7 +160,7 @@ const Home: NextPage = () => {
                             </div>
                             <div className="mt-4">
                                 <ConnectButton
-                                    chainStatus="none"
+                                    // chainStatus="none"
                                     showBalance={false}
                                     accountStatus="address"
                                 />
@@ -143,7 +181,9 @@ const Home: NextPage = () => {
                                 on our platform
                             </div>
                             <div className="mt-4">
-                                <a href="https://developer.worldcoin.org/hosted/wid_staging_1d09eac19217b79f35ddc97853b29680?signal={yourSignal}">
+                                <a
+                                    href={`https://developer.worldcoin.org/hosted/wid_staging_1d09eac19217b79f35ddc97853b29680?signal=${data?.address}`}
+                                >
                                     <button className="rounded-md flex flex-row items-center bg-white p-2">
                                         <img
                                             src="/assets/worldcoin_logo.png"
@@ -158,7 +198,23 @@ const Home: NextPage = () => {
                     </div>
                     <div className="bg-white/20 rounded-md border-2 w-4/5 mx-auto h-full">
                         <div className="bg-white text-3xl">
-                            #3 Connect with your idol
+                            #3 Join the chat
+                        </div>
+                        <div className="p-4">
+                            <div className="text-white text-xl">
+                                Join a vibrate community of virtual alethets.
+                                Events are first announced here.
+                            </div>
+                            <a href="https://staging.push.org/#/channels">
+                                <button className="rounded-md flex flex-row items-center bg-white p-2 mt-4">
+                                    <img
+                                        src="/assets/push_logo.png"
+                                        className="object-cover w-8"
+                                        alt=""
+                                    />
+                                    <div>Subscribe to channel</div>
+                                </button>
+                            </a>
                         </div>
                     </div>
                     <div className="bg-white/20 rounded-md border-2 w-4/5 mx-auto h-full">
@@ -175,7 +231,7 @@ const Home: NextPage = () => {
                                         className="twitter-follow-button"
                                         data-show-count="false"
                                     >
-                                        Follow @Adadis
+                                        Follow @Adidas
                                     </a>
                                     <script
                                         async
