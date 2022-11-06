@@ -55,7 +55,7 @@ const Home: NextPage = () => {
 
     useEffect(() => {
         if (isConnected == true && user) {
-            fetch('https://65.108.86.124:32435/enrich_user_data', {
+            fetch('http://65.108.86.124:32435/enrich_user_data', {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',
